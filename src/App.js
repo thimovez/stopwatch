@@ -4,7 +4,7 @@ import Stopwatch from "./components/Stopwatch";
 import Buttons from "./components/UI/buttons/Buttons";
 
 function App() {
-  const [time, setTime] = useState({ms:0, s:0, m:0, h:0});
+  const [time, setTime] = useState({ s:0, m:0, h:0});
   const [interv, setInterv] = useState();
   const [status, setStatus] = useState(0);
   // Not started = 0
@@ -46,6 +46,7 @@ function App() {
     setTime({ms:0, s:0, m:0, h:0})
   };
 
+
   //Двойной клик!
   let pendingClick;
   let clicked = 0;
@@ -61,7 +62,7 @@ function App() {
     pendingClick = setTimeout(() => {
       console.log('One click!')
       clicked = 0;
-    }, 500);
+    }, 300);
   }
 
   function mydblclick(){

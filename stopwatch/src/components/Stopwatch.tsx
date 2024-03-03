@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import Buttons from './UI/buttons/Buttons';
+import styles from ".././styles/components/_all.scss";
 
 const Stopwatch: React.FC = () => {
 
@@ -89,6 +90,7 @@ const Stopwatch: React.FC = () => {
   }
   
   return (
+    <div className={styles}>
     <div className="stopwatch">
       <div className="container">
         <div className="stopwatch__wrapper">
@@ -96,18 +98,22 @@ const Stopwatch: React.FC = () => {
             <div className="hours">{renderHour()}</div>
               <span>:</span>
             <div className="minutes">{(time.minute >= 10)? time.minute : "0"+ time.minute}</div> 
-             <span>:</span> 
-            <div className="millisecond">{(time.milliseconds >= 10) ? time.milliseconds : "0" + time.milliseconds}</div>
-              <span>:</span> 
+            <span>:</span>
             <div className="seconds">{(time.second >= 10) ? time.second : "0" + time.second}</div>
+            <span>:</span> 
+            <div className="millisecond">{(time.milliseconds >= 10) ? time.milliseconds : "0" + time.milliseconds}</div>
+               
           </div>
           {/* <Buttons status={status} start={start} stop={stop} reset={reset} wait={dbClick}/> */}
+          <div className='stopwatch__buttons'>
           <button onClick={start}>Start</button>
           <button onClick={stop}>Stop</button>
           <button onClick={reset}>Reset</button>
           <button onClick={wait}>Wait</button>
+          </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

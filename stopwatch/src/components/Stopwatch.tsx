@@ -68,12 +68,14 @@ const Stopwatch: React.FC = () => {
       second:0,
       minute:0,
       hour:0
-    })
+    });
   };
 
   const wait = (event: React.MouseEvent<HTMLButtonElement>): void => {
     if (event.detail === 2) {
-      console.log("double click")
+      console.log("double click");
+      setTimerStarted(false);
+      stop()
     }
   }
 

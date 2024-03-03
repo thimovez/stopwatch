@@ -18,7 +18,7 @@ const Stopwatch: React.FC = () => {
   });
 
   const [interval, setInterval1] = useState<NodeJS.Timer>();
-  const [status, setStatus] = useState(0);
+  const [timerStarted, setTimerStarted] = useState<boolean>(false);
   
   let updateMillisecond = time?.milliseconds;
   let updateSecond = time?.second;
@@ -52,24 +52,19 @@ const Stopwatch: React.FC = () => {
       return
     }
 
-  /* Not started = 0
-     Started = 1
-     Stopped = 2
-  */
   const start = () => {
-    // RunTimer();
-    // setStatus(1);
+    setTimerStarted(true);
     setInterval1(setInterval(RunTimer, 10));
   };
 
   const stop = () => {
+    setTimerStarted(false);
     clearInterval(interval);
-    // setStatus(2);
   };
 
   const reset = () => {
+    setTimerStarted(false);
     clearInterval(interval);
-    // setStatus(0);
     setTime({
       milliseconds:0,
       second:0,
@@ -105,26 +100,25 @@ const Stopwatch: React.FC = () => {
   //   }, 300);
   // }
   
-  // Время в часах
-  // const h = () => {
-  //   if(time.h === 1){
-  //     return '';
-  //   }else {
-  //     return <div className="hours">{(time.h >= 10)? time.h : "0"+ time.h}</div>;
-  //   }
-  // }
-
+  const renderHour = () => {
+    if(time.hour === 1){
+      return '';
+    }else {
+      return time.hour >= 10 ? time.hour : "0"+ time.hour;
+    }
+  }
+  
   return (
     <div className="stopwatch">
       <div className="container">
         <div className="stopwatch__wrapper">
           <div className="stopwatch__numbers">
-            {/* {h()} */}
-             <span>:</span>
-              <div className="minutes">{(time.minute >= 10)? time.minute : "0"+ time.minute}</div> 
+            <div className="hours">{renderHour()}</div>
+              <span>:</span>
+            <div className="minutes">{(time.minute >= 10)? time.minute : "0"+ time.minute}</div> 
              <span>:</span> 
             <div className="millisecond">{(time.milliseconds >= 10) ? time.milliseconds : "0" + time.milliseconds}</div>
-            <span>:</span> 
+              <span>:</span> 
             <div className="seconds">{(time.second >= 10) ? time.second : "0" + time.second}</div>
           </div>
           {/* <Buttons status={status} start={start} stop={stop} reset={reset} wait={dbClick}/> */}

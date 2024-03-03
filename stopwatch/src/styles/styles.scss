@@ -1,6 +1,6 @@
 //*****Import default values//*****
-@import './default/all';
+@use './default/all';
 
 
 //*****Import components of site//*****
-@import './components/all';
+@use './components/all';

@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import Buttons from './UI/buttons/Buttons';
 import styles from ".././styles/components/_all.scss";
 
 const Stopwatch: React.FC = () => {
@@ -102,14 +101,12 @@ const Stopwatch: React.FC = () => {
             <div className="seconds">{(time.second >= 10) ? time.second : "0" + time.second}</div>
             <span>:</span> 
             <div className="millisecond">{(time.milliseconds >= 10) ? time.milliseconds : "0" + time.milliseconds}</div>
-               
           </div>
-          {/* <Buttons status={status} start={start} stop={stop} reset={reset} wait={dbClick}/> */}
           <div className='stopwatch__buttons'>
-          <button disabled={timerStarted} onClick={start}>Start</button>
-          <button onClick={stop}>Stop</button>
-          <button onClick={reset}>Reset</button>
-          <button onClick={wait}>Wait</button>
+            <button disabled={timerStarted} onClick={start}>Start</button>
+            <button onClick={stop}>Stop</button>
+            <button onClick={reset}>Reset</button>
+            <button onClick={wait}>Wait</button>
           </div>
         </div>
       </div>

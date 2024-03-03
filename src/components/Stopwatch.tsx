@@ -106,7 +106,7 @@ const Stopwatch: React.FC = () => {
           </div>
           {/* <Buttons status={status} start={start} stop={stop} reset={reset} wait={dbClick}/> */}
           <div className='stopwatch__buttons'>
-          <button onClick={start}>Start</button>
+          <button disabled={timerStarted} onClick={start}>Start</button>
           <button onClick={stop}>Stop</button>
           <button onClick={reset}>Reset</button>
           <button onClick={wait}>Wait</button>

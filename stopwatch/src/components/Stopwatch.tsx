@@ -48,21 +48,19 @@ const Stopwatch: React.FC = () => {
         minute:updatedMinute,
         hour:updatedHour
       });
-
-      return
     }
 
-  const start = () => {
+  const start = (): void => {
     setTimerStarted(true);
     setInterval1(setInterval(RunTimer, 10));
   };
 
-  const stop = () => {
+  const stop = (): void => {
     setTimerStarted(false);
     clearInterval(interval);
   };
 
-  const reset = () => {
+  const reset = (): void => {
     setTimerStarted(false);
     clearInterval(interval);
     setTime({
@@ -73,39 +71,19 @@ const Stopwatch: React.FC = () => {
     })
   };
 
-  // const wait = () => {
-  //   console.log('Double click');
-  //   clearInterval(interv);
-  //   setStatus(2);
-  // }
+  const wait = (event: React.MouseEvent<HTMLButtonElement>): void => {
+    if (event.detail === 2) {
+      console.log("double click")
+    }
+  }
 
-  // Логика запуска секундомера
- 
-
-  //Двойной клик!
-  // let pendingClick;
-  // let clicked = 0;
-  // const dbClick = () => {
-  //   clicked++;
-  //   if(clicked >= 2){
-  //     wait()
-  //     clearTimeout(pendingClick)
-  //     clicked = 0;
-  //     return;
-  //   }
-  //   clearTimeout(pendingClick)
-  //   pendingClick = setTimeout(() => {
-  //     console.log('One click!')
-  //     clicked = 0;
-  //   }, 300);
-  // }
   
   const renderHour = () => {
     if(time.hour === 1){
-      return '';
-    }else {
-      return time.hour >= 10 ? time.hour : "0"+ time.hour;
+      return "";
     }
+    
+    return time.hour >= 10 ? time.hour : "0"+ time.hour;
   }
   
   return (
@@ -125,6 +103,7 @@ const Stopwatch: React.FC = () => {
           <button onClick={start}>Start</button>
           <button onClick={stop}>Stop</button>
           <button onClick={reset}>Reset</button>
+          <button onClick={wait}>Wait</button>
         </div>
       </div>
     </div>
